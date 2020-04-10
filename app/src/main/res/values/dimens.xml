@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_size">40dp</dimen>
+    <dimen name="image_margin">50dp</dimen>
+    <item name="image_bias" type="dimen" format="float">0.95</item>
+</resources>

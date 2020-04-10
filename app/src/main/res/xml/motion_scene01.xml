@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <Transition
+        app:constraintSetStart="@id/start"
+        app:constraintSetEnd="@id/end"
+        android:id="@+id/transition"
+        app:duration="250"
+        app:autoTransition="animateToEnd"
+        />
+
+    <ConstraintSet
+        android:id="@+id/start"
+        >
+        <Constraint
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/motionLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imgView1"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:layout_marginStart="@dimen/image_margin"
+            app:layout_constraintVertical_bias="@dimen/image_bias"
+            />
+
+        <Constraint
+            app:layout_constraintStart_toEndOf="@id/imgView1"
+            app:layout_constraintEnd_toStartOf="@id/imgView3"
+            app:layout_constraintTop_toTopOf="@id/motionLayout"
+            android:id="@+id/imgView2"
+            android:layout_width="@dimen/image_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="@dimen/image_size"
+            app:layout_constraintVertical_bias="@dimen/image_bias"
+            />
+
+        <Constraint
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/motionLayout"
+            android:id="@+id/imgView3"
+            android:layout_marginEnd="@dimen/image_margin"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            app:layout_constraintVertical_bias="@dimen/image_bias"
+            />
+
+        <Constraint
+            android:id="@id/fab"
+            tools:background="@color/colorAccent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="25dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
+
+    </ConstraintSet>
+
+
+    <ConstraintSet
+        android:id="@+id/end"
+        app:deriveConstraintsFrom="@id/start"
+        >
+
+        <Constraint
+            android:id="@id/fab"
+            tools:background="@color/colorAccent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="25dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.5"/>
+
+
+    </ConstraintSet>
+
+</MotionScene>
