@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ConstraintSet android:id="@+id/end_motion">
-        <Constraint
-            android:id="@+id/fabDrawer"
-            >
+        <Constraint android:id="@+id/fabDrawer">
             <Layout
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -13,12 +11,11 @@
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="#151515"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintEnd_toEndOf="parent" />
 
-            <Transform
-                android:rotation="360"
-                />
+            <CustomAttribute
+                app:attributeName="progress"
+                app:customFloatValue="0.5" />
         </Constraint>
 
         <Constraint
@@ -26,44 +23,39 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:padding="15dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:0.9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:visibility="visible"
-            />
+            app:layout_constraintVertical_bias="0.0" />
 
         <Constraint
             android:id="@+id/lottieAnim"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/myViewPager"
-            app:layout_constraintBottom_toTopOf="@id/fabDrawer"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@id/lottieAnim2"
-            app:lottie_rawRes="@raw/staysafe"
             android:visibility="visible"
-            />
+            app:layout_constraintBottom_toTopOf="@id/fabDrawer"
+            app:layout_constraintEnd_toStartOf="@id/lottieAnim2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/myViewPager" />
 
         <Constraint
             android:id="@+id/lottieAnim2"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@id/fabDrawer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/lottieAnim"
-            app:layout_constraintTop_toBottomOf="@id/myViewPager"
-            android:visibility="visible"
-            />
+            app:layout_constraintTop_toBottomOf="@id/myViewPager" />
 
 
     </ConstraintSet>
 
-    <ConstraintSet
-        android:id="@+id/start_motion">
+    <ConstraintSet android:id="@+id/start_motion">
 
         <Constraint
             android:id="@+id/fabDrawer"
@@ -72,49 +64,44 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="#151515"
+            android:elevation="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
-            <Transform
-                android:rotation="0"
-                />
+            app:layout_constraintEnd_toEndOf="parent">
+            <CustomAttribute
+                app:attributeName="progress"
+                app:customFloatValue="0.0" />
+
         </Constraint>
 
         <Constraint
             android:id="@+id/myViewPager"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:padding="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appBar"
+            android:scaleX="0"
+            android:scaleY="0"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:visibility="gone"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBar" />
 
 
         <Constraint
             android:id="@+id/lottieAnim"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/fabDrawer"
-            app:layout_constraintEnd_toStartOf="@id/fabDrawer"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/fabDrawer"
-            app:layout_constraintTop_toBottomOf="@id/fabDrawer"
-            android:visibility="gone"
-            />
+            android:scaleX="0"
+            android:scaleY="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fabDrawer" />
 
         <Constraint
             android:id="@+id/lottieAnim2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/fabDrawer"
-            app:layout_constraintEnd_toEndOf="@id/fabDrawer"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/fabDrawer"
-            app:layout_constraintTop_toBottomOf="@id/fabDrawer"
-            android:visibility="gone"
-            />
+            android:scaleX="0"
+            android:scaleY="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fabDrawer" />
 
     </ConstraintSet>
 
@@ -127,29 +114,43 @@
 
         <OnClick
             app:clickAction="toggle"
-            app:targetId="@id/fabDrawer"
-            />
+            app:targetId="@id/fabDrawer" />
+
+        <KeyFrameSet>
+
+            <KeyAttribute
+                android:rotation="90"
+                app:framePosition="50"
+                app:motionTarget="@id/myViewPager" />
+
+            <KeyAttribute
+                android:rotation="0"
+                app:framePosition="100"
+                app:motionTarget="@id/myViewPager" />
+
+        </KeyFrameSet>
 
         <KeyFrameSet>
             <KeyAttribute
-                app:framePosition="0"
-                app:motionTarget="@id/fabDrawer"
-                >
-                <CustomAttribute
-                    app:attributeName="lottieProgress"
-                    app:customFloatValue="0.0"
-                    />
-            </KeyAttribute>
+                android:rotation="90"
+                app:framePosition="50"
+                app:motionTarget="@id/lottieAnim" />
 
             <KeyAttribute
+                android:rotation="0"
                 app:framePosition="100"
-                app:motionTarget="@id/fabDrawer"
-                >
-                <CustomAttribute
-                    app:attributeName="lottieProgress"
-                    app:customFloatValue="1.0"
-                    />
-            </KeyAttribute>
+                app:motionTarget="@id/lottieAnim" />
+
+
+            <KeyAttribute
+                android:rotation="90"
+                app:framePosition="50"
+                app:motionTarget="@id/lottieAnim2" />
+
+            <KeyAttribute
+                android:rotation="0"
+                app:framePosition="100"
+                app:motionTarget="@id/lottieAnim2" />
 
         </KeyFrameSet>
 
