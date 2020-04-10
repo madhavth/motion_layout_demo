@@ -41,15 +41,13 @@ constructor(context: Context, attributeSet: AttributeSet? = null, dsa: Int = 0) 
      fun addPageTransformer() {
         if(viewPager2!=null)
         {
-            viewPager2!!.orientation = ViewPager2.ORIENTATION_VERTICAL
-
             viewPager2!!.setPageTransformer { page, position ->
                 val pos = if (position < 0) -position else position
                 page.rotationY = pos * 180
                 page.scaleX = (1 - pos)
                 page.scaleY = (1 - pos)
                 page.alpha = (1 - pos)
-                page.translationY = -position * viewPager2!!.width / 2
+                page.translationX = -position * viewPager2!!.width / 2
             }
         }
     }

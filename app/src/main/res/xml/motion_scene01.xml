@@ -136,6 +136,7 @@
 
 
         <OnSwipe
+            app:touchRegionId="@id/fabDrawer"
             app:dragDirection="dragLeft"
             app:touchAnchorId="@id/fabDrawer"
             app:targetId="@id/fabDrawer" />
